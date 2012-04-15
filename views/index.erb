@@ -1,0 +1,51 @@
+<div class="hero-unit">
+	<h2>Получение кода</h2>
+	<form id="lastfm" class="form-horizontal">
+		<fieldset>
+			<div class="control-group">
+	        	<label class="control-label" for="nick">Nick на last.fm/users/</label>
+	        	<div class="controls">
+	        		 <input type="text" maxlength="64" id="nick" class="input-xlarge" />	        		
+	    		</div>
+	    	</div>
+			<div class="control-group">
+	        	<label class="control-label" for="nick">Дизайн</label>
+	        	<div class="controls">
+	        		 <select id="theme">
+	        		 	<option value="rockufa">Rockufa dark</option>	        		
+	        		 	<option value="white">Rockufa white</option>	        		
+	        		 	<option value="orange">Rockufa dark & orange</option>
+	        		 	<option value="sepultura">Sepultura white</option>	        		
+	        		 	<option value="sepultura2">Sepultura dark</option>	        		
+	        		 	<option value="extremecondition">Extreme Condition</option>	        		
+        		 	</select>	        		
+	    		</div>
+    		</div>
+    	</fieldset>				
+	</form>
+	<p><a class="btn btn-primary btn-large" id="generate_btn">Сгенерировать код &raquo;</a></p>
+	<div id="code_gen" style="display:none">
+		<p>Скопируйте и вставьте в подпись на форуме</p>
+		<textarea id="code" style="width:90%;height:32px"></textarea><br/>
+		<img src="" id="preview" alt="" />
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+	$('#generate_btn').click( function(){
+		var nick = $('#nick').val();
+		if( nick == '' ){
+			alert('Забыли указать nick?');
+			$('#nick').focus();
+			return;
+		}		
+		var theme = $('#theme').val();
+		$('#code').val( '[url=http://lastfm.rockufa.ru][img]http://lastfmer.heroku.com/play/'+theme+'/'+nick+'[/img][/url]' );
+		$('#preview').attr( 'src', '/play/'+theme+'/'+nick );
+		$('#code_gen').show('slow'); 
+	});
+});
+</script>
+
+<hr />
