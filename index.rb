@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
-require Dir.pwd + '/classes/lastfm.rb'
+require Dir.pwd + '/classes/twitter.rb'
 require Dir.pwd + '/classes/imagebar.rb'
 require 'ostruct'
 require 'yaml'
@@ -18,11 +18,11 @@ configure do
 end
 
 get '/' do
-  response['Cache-Control'] = "public, max-age=#{60*10}"
+  response['Cache-Control'] = "public, max-age=#{5*60*10}"
   erb :index
 end
 
-get '/play/:theme/:user' do
+get '/twit/:theme/:user' do
   theme_dir = Dir.pwd + '/themes/'
   user_name = params[:user]
   theme     = params[:theme]
@@ -37,10 +37,10 @@ get '/play/:theme/:user' do
   conf = OpenStruct.new( YAML.load_file theme_dir + theme + '.yml' )
   
   # get last tracks from last.fm
-  tracks = LastFM.get_tracks user_name
+  twit = Twitter.get_last_post user_name
 
   # out headers and our image
   response['Cache-Control'] = "public, max-age=#{60*2}"
   content_type 'image/gif'
-  ImageBar.draw theme_dir, theme, tracks, conf  
+  ImageBar.draw theme_dir, theme, twit, conf  
 end
