@@ -1,0 +1,11 @@
+﻿name: "rockufa"
+left: 10
+top: 10
+width: 440
+height: 60
+color: "white"
+font: "Tahoma"
+font_size: 10
+chars_in_row: 70
+kerning: 1
+interline_spacing: 2

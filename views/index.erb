@@ -1,31 +1,26 @@
 <div class="hero-unit">
-	<h2>Получение кода</h2>
+	<h2>Make your code</h2>
 	<form id="lastfm" class="form-horizontal">
 		<fieldset>
 			<div class="control-group">
-	        	<label class="control-label" for="nick">Nick на last.fm/users/</label>
+	        	<label class="control-label" for="nick">Nick on twitter.com/#!/</label>
 	        	<div class="controls">
-	        		 <input type="text" maxlength="64" id="nick" class="input-xlarge" />	        		
+	        		 <input type="text" maxlength="64" id="nick" class="input-xlarge" />	
 	    		</div>
 	    	</div>
 			<div class="control-group">
-	        	<label class="control-label" for="nick">Дизайн</label>
+	        	<label class="control-label" for="nick">Theme:</label>
 	        	<div class="controls">
 	        		 <select id="theme">
-	        		 	<option value="rockufa">Rockufa dark</option>	        		
-	        		 	<option value="white">Rockufa white</option>	        		
-	        		 	<option value="orange">Rockufa dark & orange</option>
-	        		 	<option value="sepultura">Sepultura white</option>	        		
-	        		 	<option value="sepultura2">Sepultura dark</option>	        		
-	        		 	<option value="extremecondition">Extreme Condition</option>	        		
+	        		 	<option value="indark">In Dark</option>	        		
         		 	</select>	        		
 	    		</div>
     		</div>
     	</fieldset>				
 	</form>
-	<p><a class="btn btn-primary btn-large" id="generate_btn">Сгенерировать код &raquo;</a></p>
+	<p><a class="btn btn-primary btn-large" id="generate_btn">Get code for a picture &raquo;</a></p>
 	<div id="code_gen" style="display:none">
-		<p>Скопируйте и вставьте в подпись на форуме</p>
+		<p>Copy and paste to forum</p>
 		<textarea id="code" style="width:90%;height:32px"></textarea><br/>
 		<img src="" id="preview" alt="" />
 	</div>
@@ -36,12 +31,12 @@ $(function() {
 	$('#generate_btn').click( function(){
 		var nick = $('#nick').val();
 		if( nick == '' ){
-			alert('Забыли указать nick?');
+			alert('You forget your nick?');
 			$('#nick').focus();
 			return;
 		}		
 		var theme = $('#theme').val();
-		$('#code').val( '[url=http://lastfm.rockufa.ru][img]http://lastfmer.heroku.com/twit/'+theme+'/'+nick+'[/img][/url]' );
+		$('#code').val( '[url=http://twitterbar.heroku.com][img]http://twitterbar.heroku.com/twit/'+theme+'/'+nick+'.gif[/img][/url]' );
 		$('#preview').attr( 'src', '/twit/'+theme+'/'+nick );
 		$('#code_gen').show('slow'); 
 	});

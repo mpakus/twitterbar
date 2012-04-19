@@ -10,14 +10,15 @@ class ImageBar
       
       text = Magick::Draw.new
       # self.font_family = 'Helvetica'
-      text.font_family = conf.font_family
+      text.font        = conf.font
       text.pointsize   = conf.font_size.to_i
       text.gravity     = Magick::NorthWestGravity
       text.fill        = conf.color
-      #text.font_we
+      text.kerning     = conf.kerning
+      text.interline_spacing = conf.interline_spacing
 
       # draw text on background      
-      text.annotate img, 200, 80, 110, 10, wrap_text( twit[0]['text'] )      
+      text.annotate img, conf.width, conf.height, conf.left, conf.top, wrap_text( twit[0]['text'], conf.chars_in_row )      
       img.to_blob    
     end
 

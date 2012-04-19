@@ -22,7 +22,7 @@ get '/' do
   erb :index
 end
 
-get '/twit/:theme/:user' do
+get '/twit/:theme/:user.gif' do
   theme_dir = Dir.pwd + '/themes/'
   user_name = params[:user]
   theme     = params[:theme]
