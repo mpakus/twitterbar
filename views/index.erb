@@ -1,6 +1,6 @@
 <div class="hero-unit">
 	<h2>Make your code</h2>
-	<form id="lastfm" class="form-horizontal">
+	<form id="lastfm" class="form-horizontal" onSubmit="gen_code();return false">
 		<fieldset>
 			<div class="control-group">
 	        	<label class="control-label" for="nick">Nick on twitter.com/#!/</label>
@@ -27,19 +27,20 @@
 </div>
 
 <script type="text/javascript">
+function gen_code(){
+	var nick = $('#nick').val();
+	if( nick == '' ){
+		alert('You forget your nick?');
+		$('#nick').focus();
+		return;
+	}		
+	var theme = $('#theme').val();
+	$('#code').val( '[url=http://twitterbar.heroku.com][img]http://twitterbar.heroku.com/twit/'+theme+'/'+nick+'.gif[/img][/url]' );
+	$('#preview').attr( 'src', '/twit/'+theme+'/'+nick+'.gif' );
+	$('#code_gen').show('slow'); 	
+}
 $(function() {
-	$('#generate_btn').click( function(){
-		var nick = $('#nick').val();
-		if( nick == '' ){
-			alert('You forget your nick?');
-			$('#nick').focus();
-			return;
-		}		
-		var theme = $('#theme').val();
-		$('#code').val( '[url=http://twitterbar.heroku.com][img]http://twitterbar.heroku.com/twit/'+theme+'/'+nick+'.gif[/img][/url]' );
-		$('#preview').attr( 'src', '/twit/'+theme+'/'+nick+'.gif' );
-		$('#code_gen').show('slow'); 
-	});
+	$('#generate_btn').click( gen_code );
 });
 </script>
 
