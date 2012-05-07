@@ -9,7 +9,6 @@ class ImageBar
       img = Magick::ImageList.new theme_dir + theme + '.gif'
       
       text = Magick::Draw.new
-      # self.font_family = 'Helvetica'
       text.font        = conf.font
       text.pointsize   = conf.font_size.to_i
       text.gravity     = Magick::NorthWestGravity

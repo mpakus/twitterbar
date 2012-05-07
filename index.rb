@@ -36,7 +36,7 @@ get '/twit/:theme/:user.gif' do
   # read theme config
   conf = OpenStruct.new( YAML.load_file theme_dir + theme + '.yml' )
   
-  # get last tracks from last.fm
+  # get last twit from twitter.com
   twit = Twitter.get_last_post user_name
 
   # out headers and our image
