@@ -1,0 +1,7 @@
+Simple Sinatra's application, create static image from user's last twit (twitter.com)
+
+Простой сервис на Ruby фрэймворке Sinatra. 
+Сервис предназначен для создания обычной, статичной картинки из последнего текстового сообщения в Twitter'е.
+Основное предназначение например размещение картинки в своём статусе форума или например на сайте ЖЖ для прикрепленного сверху сообщения.
+
+Автор: Ibragimov "MpaK" Renat http://mrak7.com | http://aomega.ru
